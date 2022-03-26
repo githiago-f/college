@@ -1,0 +1,16 @@
+aloca 2: variaveis x e um ponteiro px
+inicia x como 1
+faz px apontar para o endereço de x
+01. printa o valor de x (1)
+02. printa o valor de px (posição de memória do x)
+03. soma 1 ao valor do ponteiro (2)
+04. printa o valor de px (posição de memória do x)
+05. printa o valor de x que está sendo apontado pelo px (1)
+06. soma 2 ao valor apontado por px (x = 2)
+07. printa o valor de px (ainda posição de x)
+08. printa o valor atual de x mas soma 1 ao x (x = 3)
+09. printa novamente o valor de px (ainda posição de x)
+10. acessa e printa o valor apontado por px, depois soma 1 à posição que era armazenada por px
+11. acessa a nova posição de px (não mais aponta para X).
+12. acessa o valor de px, depois incrementa a posição armazenada em px novamente.
+13. printa a posição armazenada em px
