@@ -86,16 +86,17 @@ void imprimeSituacaoAluno(int indice)
 
 int main(int argc, char const *argv[])
 {
-  for (int i = 0; i < 5; i++)
+  const int size = 5;
+  for (int i = 0; i < size; i++)
   {
     lerInfosAluno(i);
   }
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < size; i++)
   {
     escreveInfosAluno(i);
     printf("Media: %f\n", mediaAluno(i));
   }
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < size; i++)
   {
     imprimeSituacaoAluno(i);
   }
