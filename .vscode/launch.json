@@ -11,6 +11,7 @@
       "cwd": "${fileDirname}",
       "environment": [],
       "externalConsole": false,
+      "preLaunchTask": "C/C++: clang build active file",
       "MIMode": "gdb",
       "setupCommands": [
         {
