@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
-Criar agenda:
-Cada registro deve ter capacidade para armazenar o nome, telefone, celular, endereço e aniversário.
-A agenda deve ser apresentar as opções: 
-1- inserir / 2-visualizar os dados de uma posição (perguntar a posição) / 3-sair; (ficar em laço até o usuário escolher sair). 
-Máximo de 100 registros. (criar vetor de 100 posições, cada posição é um ponteiro para contato).
-Cada contato é criado dinamicamente ocupando as posições no vetor sequencialmente.
-Não esqueça de liberar a memória no final do programa, antes de sair.
-*/
-
 #define MAX 100
 
 typedef struct {
@@ -46,12 +36,15 @@ void visualizar(Contato *contato)
 
 int main()
 {
-    void *opcoes[3] = {
+    char *opcoes[3] = {
         "1 - inserir",
         "2 - visualizar",
         "3 - sair"};
     int opcao = 0, i = 0, position = 0, a = 0;
     Contato *contatos[MAX];
+
+    for(int x = 0; x<MAX; x++)
+        contatos[x] = NULL;
 
     do {
         for (a = 0; a < 3; a++)
@@ -62,6 +55,10 @@ int main()
         switch(opcao) {
             case 1:
                 contatos[i] = (Contato *)malloc(sizeof(Contato));
+                if(contatos[i] == 0) {
+                    printf("ih mané");
+                    return 1;
+                }
                 inserirContato(contatos[i]);
                 i++;
                 printf("Adicionado com sucesso!\n");
@@ -75,7 +72,7 @@ int main()
                 opcao = 3;
         }
     } while(opcao != 3);
-    for (a = 0; a < MAX; a++)
+    for (a = 0; a < i; a++)
         if (contatos[a] != 0)
             free(contatos[a]);
 }
