@@ -64,6 +64,7 @@ void retirar(int pos)
 
 void exibirLista()
 {
+  printf("Esta é a representação da lista: \n");
   printf("[ ");
   for (int i = 0; i < MAX; i++)
   {
@@ -88,18 +89,46 @@ void tamanhoLista()
 int main(int argc, char const *argv[])
 {
   short int opcao = 0, i;
+  int posicao, valor;
 
   for (i = 0; i < MAX; i++)
   {
     lista[i] = NULL;
   }
 
-  inserir(3, 1);
-  inserir(0, 3);
-  inserir(1, 0);
-  exibirLista();
-  retirar(0);
-  exibirLista();
+  do
+  {
+    switch (opcao)
+    {
+    case 1:
+      printf("Inserir na posição: ");
+      scanf("%d", &posicao);
+      printf("O valor: ");
+      scanf("%d", &valor);
+      inserir(posicao, valor);
+      break;
+    case 2:
+      printf("Remover da posição: ");
+      scanf("%d", &posicao);
+      retirar(posicao);
+      break;
+    case 3:
+      printf("Visualizar a posição: ");
+      scanf("%d", &posicao);
+      visualizar(posicao);
+      break;
+    case 4:
+      exibirLista();
+      break;
+    case 5:
+      tamanhoLista();
+      break;
+    default:
+      printf("Opção não encontrada.\n Terminando o programa.");
+      opcao = 0;
+      break;
+    }
+  } while (opcao != 0);
 
   printf("\n");
 
