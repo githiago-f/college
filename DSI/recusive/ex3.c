@@ -24,8 +24,9 @@ void deslocarD(int vet[],int indice, int elementos){
 /**
     Este código desloca recursivamente os numeros do vetor a partir da posição 3 até a posição 5.
     O caso base desta função é elementos = 0 e ela cria ramificações binárias em suas chamadas, ou seja
-    
-**/ 
+    Toda chamada cria mais duas chamadas da mesma função, cada uma com seus parametros
+    mas com a mesma referencia para a array vetor.
+**/
 int main(){
    int vetor[]={1,2,3,5,6,7,1,0};
     imprimeVetor(vetor);

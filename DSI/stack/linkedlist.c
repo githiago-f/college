@@ -5,8 +5,9 @@
 #include <string.h>
 
 typedef struct {
-    char nome[80];
-    char telefone[20];
+    char nome[100];
+    char email[150];
+    char fone[15];
 } Contato;
 
 typedef struct {
@@ -33,30 +34,63 @@ Nodo* nodo() {
 
 Contato* criarContato() {
     Contato* contato = (Contato*) malloc(sizeof(Contato));
-    // printf("Insira o nome do contato: ");
-    // scanf("%s", (*contato).nome);
-    strcpy(contato->nome, "Thiago Farias");
-    // printf("Insira o telefone do contato: ");
-    // scanf("%s", (*contato).telefone);
-    strcpy(contato->telefone, "5151515151");
+    printf("Insira o nome do contato: ");
+    scanf("%s", (*contato).nome);
+
+    printf("Insira o telefone do contato: ");
+    scanf("%s", (*contato).fone);
+
+    printf("Insira o email do contato: ");
+    scanf("%s", (*contato).email);
     return contato;
 }
 
-void push(Pilha** head, Contato* contato) {
-    Nodo *current = (*head)->nodo;
-    while(current!=NULL) {
-        current = (Nodo*) current->nodo;
-    }
-    current = nodo();
-    current->data = contato;
+void push(Pilha **head, Contato *contato)
+{
+    // get top
+    Nodo **top = &(*head)->nodo;
+    Nodo *novoNodo = nodo();
+    novoNodo->nodo = (struct Nodo *)*top;
+    novoNodo->data = contato;
+    (*head)->nodo = novoNodo;
 }
 
-void pop(Nodo* head);
+int vazio(Pilha *head)
+{
+    if (head->nodo == NULL)
+    {
+        return 1;
+    }
+    return 0;
+}
 
-void printEachNode(Pilha* head) {
-    Nodo *current = head->nodo;
-    while(current!=NULL) {
-        printf("Contato - %s", current->data->nome);
+Nodo *pop(Pilha **head)
+{
+    if (vazio((*head)) == 1)
+    {
+        return NULL;
+    }
+    Nodo *top = (*head)->nodo;
+    (*head)->nodo = top->nodo;
+    top->nodo = NULL;
+    return top;
+}
+
+void imprimeNodo(Nodo *node)
+{
+    Contato *contato = (*node).data;
+    printf("Contato - %s", contato->nome);
+    printf("| %s ", contato->fone);
+    printf("| %s\n", contato->email);
+}
+
+void imprimeLista(Pilha **head)
+{
+    Nodo **current = &(*head)->nodo;
+    while ((*current) != NULL)
+    {
+        imprimeNodo((*current));
+        current = (Nodo **)&(*current)->nodo;
     }
 }
 
@@ -66,5 +100,11 @@ int main() {
     push(&head, criarContato());
     push(&head, criarContato());
 
-    printEachNode(head);    
+    Nodo *removed = pop(&head);
+
+    printf("\n Item removido: \n");
+    imprimeNodo(removed);
+
+    printf("\n Itens atuais: \n");
+    imprimeLista(&head);
 }
