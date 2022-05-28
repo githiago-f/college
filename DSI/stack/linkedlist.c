@@ -68,16 +68,22 @@ Nodo *pop(Pilha **head)
 {
     if (vazio((*head)) == 1)
     {
+        printf("A pilha atual está vazia.");
         return NULL;
     }
     Nodo *top = (*head)->nodo;
-    (*head)->nodo = top->nodo;
+    (*head)->nodo = (Nodo *)top->nodo;
     top->nodo = NULL;
     return top;
 }
 
 void imprimeNodo(Nodo *node)
 {
+    if (node == NULL)
+    {
+        printf("Nenhum contato");
+        return;
+    }
     Contato *contato = (*node).data;
     printf("Contato - %s", contato->nome);
     printf("| %s ", contato->fone);
@@ -86,6 +92,11 @@ void imprimeNodo(Nodo *node)
 
 void imprimeLista(Pilha **head)
 {
+    if ((*head) == NULL)
+    {
+        printf("Pilha vazia");
+        return;
+    }
     Nodo **current = &(*head)->nodo;
     while ((*current) != NULL)
     {
@@ -94,17 +105,51 @@ void imprimeLista(Pilha **head)
     }
 }
 
-int main() { 
+int main()
+{
+    // 1 - inserir contatos de 1 a 3
+    // 2 - remover um Contato  e imprimir em tela os dados
+    // 3 - remover um Contato  e imprimir em tela os dados
+    // 4 -  empilhar um novo contato
+    // 5 - remover um Contato  e imprimir em tela os dados
+    // 6 - remover um Contato  e imprimir em tela os dados
+    // 7 – tentar remover contato (deve dar erro)
+
     Pilha* head = pilha();
-    push(&head, criarContato());
-    push(&head, criarContato());
-    push(&head, criarContato());
+    // task 1
+    push(&head, criarContato()); // 1
+    push(&head, criarContato()); // 2
+    push(&head, criarContato()); // 3
 
+    // task 2
     Nodo *removed = pop(&head);
-
     printf("\n Item removido: \n");
     imprimeNodo(removed);
 
+    // task 3
+    removed = pop(&head);
+    printf("\n Item removido: \n");
+    imprimeNodo(removed);
+
+    // task 4
+    push(&head, criarContato());
+
+    // task 5
+    removed = pop(&head);
+    printf("\n Item removido: \n");
+    imprimeNodo(removed);
+
+    // task 6
+    removed = pop(&head);
+    printf("\n Item removido: \n");
+    imprimeNodo(removed);
+
+    // task 7
+    removed = pop(&head);
+    printf("\n Item removido: \n");
+    imprimeNodo(removed);
+
+    // lista final
     printf("\n Itens atuais: \n");
     imprimeLista(&head);
 }
