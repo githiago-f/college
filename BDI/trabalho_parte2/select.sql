@@ -80,12 +80,12 @@ SELECT ins.id_instancia FROM instancias ins
 LEFT JOIN programas pr ON ins.id_instancia = pr.id_programa
 WHERE pr.nome = 'Java';
 
--- 7 -> Verificar numero de usuários na fila da instancia (qualquer)
+-- 8 -> Verificar numero de usuários na fila da instancia (qualquer)
 SELECT COUNT(*) as alunos_aguradando FROM alunos_fila af
 JOIN filas fi ON fi.id_fila = af.id_fila
 WHERE fi.id_instancia = 1 AND af.data_saida IS NULL;
 
--- 8 -> Determinar aproximadamente a quantidade de memória usada em um recurso
+-- 9 -> Determinar aproximadamente a quantidade de memória usada em um recurso
 SELECT 
     re.id_recurso,
     SUM(pr.mem_consumida_apr) AS em_uso
