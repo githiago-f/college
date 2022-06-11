@@ -1,9 +1,9 @@
 CREATE SEQUENCE s_instituicao START WITH 1;
 
 CREATE TABLE instituicoes ( 
-    id_instituicao NUMBER DEFAULT s_instituicao.nextval, 
-    nome VARCHAR(80), 
-    CONSTRAINT pk_client PRIMARY KEY(id_instituicao) 
+    id_instituicao NUMBER DEFAULT s_instituicao.nextval,
+    nome VARCHAR(80),
+    CONSTRAINT pk_client PRIMARY KEY(id_instituicao)
 );
 
 CREATE SEQUENCE s_recurso START WITH 1;
@@ -79,7 +79,6 @@ CREATE TABLE aluno_fila_instancia (
     id_aluno_fila NUMBER,
     id_instancia NUMBER,
     terminou_em DATE,
-    comando CLOB,
     CONSTRAINT pk_aluno_fila_instancia PRIMARY KEY(iniciou_em) 
 );
 
