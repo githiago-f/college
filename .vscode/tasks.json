@@ -4,10 +4,9 @@
 		{
 			"type": "cppbuild",
 			"label": "C/C++: clang build active file",
-			"command": "/usr/bin/clang",
+			"command": "/usr/bin/gcc",
 			"args": [
-				"-fdiagnostics-color=always",
-				"-g",
+				"*/*.c",
 				"${file}",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"

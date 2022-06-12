@@ -29,6 +29,11 @@
   ],
   "files.associations": {
     "stdlib.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "*.tcc": "c",
+    "typeinfo": "c",
+    "contato.h": "c",
+    "double_linked_list.h": "c",
+    "cstdio": "c"
   }
 }

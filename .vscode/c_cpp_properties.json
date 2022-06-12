@@ -10,7 +10,7 @@
       "cppStandard": "c++17",
       "intelliSenseMode": "linux-gcc-x64",
       "compilerArgs": [],
-      "compilerPath": "gcc"
+      "compilerPath": "/usr/bin/gcc"
     }
   ],
   "version": 4
