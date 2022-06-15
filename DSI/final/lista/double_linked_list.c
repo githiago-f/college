@@ -54,25 +54,25 @@ int inserir(DLinkedList **lista, Nodo *nodo)
     {
       if (current->next == NULL)
       {
-        current->next = nodo;
-        nodo->prev = current;
+        current->next = (struct Nodo*)nodo;
+        nodo->prev = (struct Nodo*)current;
         (*lista)->tail = nodo;
         break;
       }
-      current = current->next;
+      current = (Nodo*) current->next;
       continue;
     }
     else
     {
-      nodo->next = current;
+      nodo->next = (struct Nodo*) current;
       if (current->prev == NULL)
       {
         (*lista)->head = nodo;
       }
-      current->prev = nodo;
+      current->prev = (struct Nodo*) nodo;
       if (current->next == NULL)
       {
-        (*lista)->tail = current;
+        (*lista)->tail =  (Nodo*) current;
       }
       break;
     }
@@ -81,19 +81,31 @@ int inserir(DLinkedList **lista, Nodo *nodo)
   return 1;
 }
 
-int remover(DLinkedList **lista, Contato *data)
+int remover(DLinkedList **lista, Contato **data, int pos)
 {
-  Nodo *temp = (*lista)->head;
-  if (vazia(lista))
+  int curPos = 0;
+  if(vazia(lista)) return 0;
+  if(tamanho(lista) <= pos) {
+    printf("Fora dos limites");
     return 0;
-  data = temp->dado;
-  if ((*lista)->head == (*lista)->tail)
+  }
+  Nodo *current = (*lista)->head;
+  while(curPos < pos) {
+    current = (Nodo*) current->next;
+    curPos++;
+  }
+  (*data) = current->dado;
+  if(current == (*lista)->tail) {
     (*lista)->tail = NULL;
-  (*lista)->head = (Nodo *)(*lista)->head->next;
-  if ((*lista)->head != NULL)
-    (*lista)->head->prev = NULL;
+  }
+  if(current->prev != NULL) {
+    ((Nodo*)current->prev)->next = current->next;
+  }
+  if(current->next != NULL) {
+    ((Nodo*)current->next)->prev = current->prev;
+  }
   (*lista)->size--;
-  free(temp);
+  free(current);
   return 1;
 }
 
@@ -111,6 +123,7 @@ void imprimeFila(DLinkedList **lista)
     return;
   }
   int numContato = 0;
+  printf("\n");
   while (temp != NULL)
   {
     printf("Contato #%d\n", numContato);

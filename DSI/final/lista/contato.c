@@ -16,7 +16,7 @@ Contato *novoContato()
 
 void imprimeContato(Contato *contato)
 {
-  printf("\nCPF: %s\n", contato->cpf);
+  printf("CPF: %s\n", contato->cpf);
   printf("Nome: %s\n", contato->nome);
-  printf("E-mail: %s\n", contato->email);
+  printf("E-mail: %s\n\n", contato->email);
 }

@@ -18,7 +18,7 @@ Nodo *novoNodo(Contato *dado);
 DLinkedList *novaLista();
 int vazia(DLinkedList **lista);
 int inserir(DLinkedList **lista, Nodo *nodo);
-int remover(DLinkedList **lista, Contato *data);
+int remover(DLinkedList **lista,  Contato **data, int pos);
 int tamanho(DLinkedList **lista);
 void imprimeFila(DLinkedList **lista);
 Contato *consultar(DLinkedList **lista, int pos);

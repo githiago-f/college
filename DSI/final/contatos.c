@@ -11,5 +11,11 @@ int main()
   inserir(&lista, novoNodo(novoContato()));
   imprimeFila(&lista);
 
+  Contato *dado;
+  remover(&lista, &dado, 1);
+
+  imprimeContato(dado);
+  imprimeFila(&lista);
+
   return 0;
 }

@@ -1,0 +1,1 @@
+gcc contatos.c */*.c -o contatos
