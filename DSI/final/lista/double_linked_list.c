@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../utils/cpf.h"
 
 Nodo *novoNodo(Contato *dado)
 {
@@ -50,7 +49,7 @@ int inserir(DLinkedList **lista, Nodo *nodo)
   {
     char *cpf1 = current->dado->cpf;
     char *cpf2 = nodo->dado->cpf;
-    if (compararCpf(cpf1, cpf2) >= 0)
+    if (strcmp(cpf1, cpf2) < 0)
     {
       if (current->next == NULL)
       {
